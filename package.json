@@ -23,12 +23,14 @@
   },
   "dependencies": {
     "@alveusgg/data": "github:alveusgg/data#0.38.1",
+    "canvas-confetti": "^1.9.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tmi.js": "^1.8.5"
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+    "@types/canvas-confetti": "^1.6.4",
     "@types/dotenv-webpack": "^7.0.7",
     "@types/node": "~20.14.13",
     "@types/react": "^18.3.3",

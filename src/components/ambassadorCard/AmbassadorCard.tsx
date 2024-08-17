@@ -17,6 +17,7 @@ import Tooltip from "../tooltip/Tooltip";
 import moderatorBadge from "../../assets/mod.svg";
 
 import styles from "./ambassadorCard.module.scss";
+import confetti from "canvas-confetti";
 
 const offsetPosition = (position: AmbassadorImage["position"]) => {
   const [x, y] = (position || "50% 50%").split(" ");
@@ -36,12 +37,24 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
   const mod =
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
     window?.Twitch?.ext?.viewer?.role === "moderator";
+  const card_canvas = document.getElementsByClassName(
+    "confetti_canvas",
+  )[0] as HTMLCanvasElement;
+  const cardConfetti = confetti.create(card_canvas, { resize: true });
+
+  if (ambassador.birth && isBirthday(ambassador.birth)) {
+    cardConfetti({
+      particleCount: 160,
+      spread: 160,
+    });
+  }
 
   return (
     <div
       className={classes(
         styles.ambassadorCard,
         className,
+        styles.confetti_canvas,
         ambassador.birth && isBirthday(ambassador.birth) && styles.birthday,
       )}
     >
